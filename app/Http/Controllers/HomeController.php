@@ -12,7 +12,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $users = User::query()->get();
+        $users = User::query()->with(['departments','position'])->get();
         return view('panel', ['users' => $users]);
     }
 }

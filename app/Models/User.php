@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Departament;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -42,4 +44,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function departments()
+    {
+        return $this->belongsToMany(Departament::class, 'user_departments', 'user_id', 'department_id');
+    }
+
+    public function position()
+    {
+        return $this->hasOne(Position::class,'id','position_id');
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d.m.Y');
+    }
+
 }
