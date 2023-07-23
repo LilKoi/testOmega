@@ -14,7 +14,7 @@
             <ul class="d-flex justify-content-around list-unstyled">
                 <li><a href="{{route('home')}}">Главная</a></li>
                 <li><a href="{{route('departaments.index')}}">Департаменты</a></li>
-                <li><a href="">Отделы</a></li>
+                <li><a href="{{route('positions.index')}}">Отделы</a></li>
             </ul>
         </div>
     </header>
