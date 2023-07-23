@@ -19,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
-Route::get('login', [UserController::class, 'loginPage']);
+Route::get('login', [UserController::class, 'loginPage'])->name('loginPage');
 Route::post('auth/login', [UserController::class, 'login'])->name('login');
 Route::post('auth/register', [UserController::class, 'register'])->name('register');
-
-Route::resource('departaments', DepartamentController::class);
-Route::resource('positions', PositionController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('departaments', DepartamentController::class);
+    Route::resource('positions', PositionController::class);
+});
