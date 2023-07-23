@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne(Rol);
+        return $this->hasOne(Role::class);
     }
 
 }
