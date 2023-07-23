@@ -23,6 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'position_id',
+        'avatar',
+        'role_id'
     ];
 
     /**
@@ -31,7 +34,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        // 'password',
         'remember_token',
     ];
 
@@ -42,7 +45,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        // 'password' => 'hashed',
     ];
 
     public function departments()
@@ -58,6 +61,11 @@ class User extends Authenticatable
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('d.m.Y');
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Rol);
     }
 
 }

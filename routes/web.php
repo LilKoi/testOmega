@@ -25,4 +25,7 @@ Route::post('auth/register', [UserController::class, 'register'])->name('registe
 Route::middleware(['auth'])->group(function () {
     Route::resource('departaments', DepartamentController::class);
     Route::resource('positions', PositionController::class);
+    Route::put('users/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('user.edit');
+    Route::delete('/users/{user}',[UserController::class,'delete'])->name('user.delete');
 });

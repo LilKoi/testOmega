@@ -18,11 +18,22 @@
                 <tr>
                     <td>{{$index+1}}</td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->position}}</td>
-                    <td>Отделы</td>
+                    <td>
+                        @if(isset($user->position))
+                        <p>{{$user->position->name}}</p>
+                        @endif
+                    </td>
+                    <td>
+                        @if(isset($user->departments))
+                        @foreach($user->departments as $departament)
+                        <p>{{$departament->name}}</p>
+                        @endforeach
+                        @endif
+
+                    </td>
                     <td>{{$user->created_at}}</td>
-                    <td><i class="bi bi-pen"></i></td>
-                    <td><i class="bi bi-trash"></i></td>
+                    <td><a href="{{route('user.edit',['user' => $user->id])}}"> <i class="bi bi-pen"></i></a></td>
+                    <td><a href="{{route('user.delete',['user' => $user->id])}}"><i class="bi bi-trash"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>
