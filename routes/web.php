@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
-Route::post('auth/login', [UserController::class, 'login']);
-Route::post('auth/register', [UserController::class, 'register']);
+Route::get('login',[UserController::class, 'loginPage']);
+Route::post('auth/login', [UserController::class, 'login'])->name('login');
+Route::post('auth/register', [UserController::class, 'register'])->name('register');
 
 Route::resource('departaments', DepartamentController::class);

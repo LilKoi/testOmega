@@ -14,13 +14,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($departaments as $index=> $user)
+                @foreach($departaments as $index=> $departament)
                 <tr>
                     <td>{{$index+1}}</td>
-                    <td>{{$departaments->name}}</td>
-                    <td>{{$departaments->created_at}}</td>
-                    <td><i class="bi bi-pen"></i></td>
-                    <td><i class="bi bi-trash"></i></td>
+                    <td>{{$departament->name}}</td>
+                    <td>{{$departament->created_at}}</td>
+                    <td><a href="{{route('departaments.edit',['departament' =>$departament->id])}}"><i class="bi bi-pen"></i></a></td>
+                    <td><a href="{{route('departaments.destroy',['departament' =>$departament->id])}}"><i class="bi bi-trash"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

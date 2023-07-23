@@ -27,12 +27,17 @@ class UserController extends Controller
         return redirect('/login');
     }
 
+    public function loginPage()
+    {
+        return view('login');
+    }
+
     public function login(LoginUserRequest $request)
     {
         $data = $request->validated();
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
-            return redirect('/panel');
+            return redirect('/');
         } else {
             return back()->withErrors([
                 'errors' => 'Что-то пошло не так',
